@@ -33,6 +33,13 @@
         android:key="@string/pref_units_key"
         android:title="@string/pref_units_label" />
 
+    <ListPreference
+        android:defaultValue="@string/pref_icons_colored"
+        android:entries="@array/pref_icons_options"
+        android:entryValues="@array/pref_icons_values"
+        android:key="@string/pref_icons_key"
+        android:title="@string/pref_icons_label" />
+
     <CheckBoxPreference
         android:defaultValue="@string/pref_enable_notifications_default"
         android:key="@string/pref_enable_notifications_key"
