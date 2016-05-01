@@ -185,11 +185,13 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
             int weatherId = data.getInt(COL_WEATHER_CONDITION_ID);
 
             // Use weather art image
-            Glide.with(this)
-                    .load(Utility.getArtUrlForWeatherCondition(getActivity(), weatherId))
-                    .error(Utility.getArtResourceForWeatherCondition(weatherId))
-                    .crossFade()
-                    .into(mIconView);
+//            Glide.with(this)
+//                    .load(Utility.getArtUrlForWeatherCondition(getActivity(), weatherId))
+//                    .error(Utility.getArtResourceForWeatherCondition(weatherId))
+//                    .crossFade()
+//                    .into(mIconView);
+
+            mIconView.setImageResource(Utility.getArtResourceFromUserPreference(getActivity(), weatherId));
 
             // Read date from cursor and update views for day of week and date
             long date = data.getLong(COL_WEATHER_DATE);

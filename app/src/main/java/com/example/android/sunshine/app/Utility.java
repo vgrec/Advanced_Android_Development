@@ -302,6 +302,38 @@ public class Utility {
         return -1;
     }
 
+    public static int getArtResourceFromUserPreference(Context context, int weatherId) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String colored = context.getString(R.string.pref_icons_colored);
+        String iconType = preferences.getString(context.getString(R.string.pref_icons_key), colored);
+
+
+        if (weatherId >= 200 && weatherId <= 232) {
+            return iconType.equals(colored) ? R.drawable.art_storm_colored : R.drawable.art_storm;
+        } else if (weatherId >= 300 && weatherId <= 321) {
+            return iconType.equals(colored) ? R.drawable.art_light_rain_colored : R.drawable.art_light_rain;
+        } else if (weatherId >= 500 && weatherId <= 504) {
+            return iconType.equals(colored) ? R.drawable.art_rain_colored : R.drawable.art_rain;
+        } else if (weatherId == 511) {
+            return iconType.equals(colored) ? R.drawable.art_snow_colored : R.drawable.art_snow;
+        } else if (weatherId >= 520 && weatherId <= 531) {
+            return iconType.equals(colored) ? R.drawable.art_rain_colored : R.drawable.art_rain;
+        } else if (weatherId >= 600 && weatherId <= 622) {
+            return iconType.equals(colored) ? R.drawable.art_snow_colored : R.drawable.art_snow;
+        } else if (weatherId >= 701 && weatherId <= 761) {
+            return iconType.equals(colored) ? R.drawable.art_fog_colored : R.drawable.art_fog;
+        } else if (weatherId == 761 || weatherId == 781) {
+            return iconType.equals(colored) ? R.drawable.art_storm_colored : R.drawable.art_storm;
+        } else if (weatherId == 800) {
+            return iconType.equals(colored) ? R.drawable.art_clear_colored : R.drawable.art_clear;
+        } else if (weatherId == 801) {
+            return iconType.equals(colored) ? R.drawable.art_light_clouds_colored : R.drawable.art_light_clouds;
+        } else if (weatherId >= 802 && weatherId <= 804) {
+            return iconType.equals(colored) ? R.drawable.art_clouds_colored : R.drawable.art_clouds;
+        }
+        return -1;
+    }
+
     public static boolean isConnectionAvailable(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();

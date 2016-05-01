@@ -73,11 +73,11 @@
     <string name="pref_units_imperial" translatable="false">imperial</string>
 
     <string name="pref_icons_colored" translatable="false">colored</string>
-    <string name="pref_icons_mono" translatable="false">mono</string>
+    <string name="pref_icons_sunshine" translatable="false">sunshine</string>
 
     <string name="pref_icons_label">Icon Pack</string>
     <string name="pref_icons_label_colored">Colored</string>
-    <string name="pref_icons_label_mono">Mono</string>
+    <string name="pref_icons_label_sunshine">Sunshine</string>
 
     <string name="pref_icons_key" translatable="false">pref_icons_key</string>
 

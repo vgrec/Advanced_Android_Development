@@ -106,12 +106,14 @@ public class ForecastAdapter extends CursorAdapter {
                 break;
             }
         }
-        
-        Glide.with(mContext)
-                .load(Utility.getArtUrlForWeatherCondition(mContext, weatherId))
-                .error(fallbackIconId)
-                .crossFade()
-                .into(viewHolder.iconView);
+
+//        Glide.with(mContext)
+//                .load(Utility.getArtUrlForWeatherCondition(mContext, weatherId))
+//                .error(fallbackIconId)
+//                .crossFade()
+//                .into(viewHolder.iconView);
+
+        viewHolder.iconView.setImageResource(Utility.getArtResourceFromUserPreference(mContext, weatherId));
 
         // Read date from cursor
         long dateInMillis = cursor.getLong(ForecastFragment.COL_WEATHER_DATE);
