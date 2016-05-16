@@ -30,4 +30,7 @@
     <color name="colorPrimaryDark">#1976D2</color>
     <color name="colorAccent">#FFEA00</color>
 
+    <color name="detail_accent_pane_background">#455A64</color>
+    <color name="detail_accent_label">#90A4AE</color>
+
 </resources>
