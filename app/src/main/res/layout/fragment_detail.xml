@@ -36,70 +36,9 @@
         android:layout_height="0dp"
         android:layout_weight="3" />
 
-    <android.support.v7.widget.GridLayout
+    <include
+        layout="@layout/detail_extras_grid"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        android:background="@color/detail_accent_pane_background"
-        android:paddingBottom="@dimen/text_vertical_margin"
-        android:paddingLeft="32dp"
-        android:paddingRight="32dp"
-        android:paddingTop="@dimen/text_vertical_margin"
-        app:columnCount="2">
-
-        <TextView
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:gravity="center_vertical"
-            android:text="@string/label_humidity"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@color/detail_accent_label"
-            app:layout_columnWeight="1"
-            app:layout_gravity="fill"
-            app:layout_rowWeight="1" />
-
-        <TextView
-            android:id="@+id/detail_humidity_textview"
-            android:gravity="center_vertical"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:textColor="@android:color/white"
-            app:layout_gravity="fill"
-            tools:text="15 %" />
-
-        <TextView
-            android:fontFamily="sans-serif"
-            android:gravity="center_vertical"
-            android:text="@string/label_pressure"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@color/detail_accent_label"
-            app:layout_gravity="fill"
-            app:layout_rowWeight="1" />
-
-        <TextView
-            android:id="@+id/detail_pressure_textview"
-            android:gravity="center_vertical"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:textColor="@android:color/white"
-            app:layout_gravity="fill"
-            tools:text="870 hPa" />
-
-        <TextView
-            android:fontFamily="sans-serif"
-            android:gravity="center_vertical"
-            android:text="@string/label_wind"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@color/detail_accent_label"
-            app:layout_gravity="fill"
-            app:layout_rowWeight="1" />
-
-        <TextView
-            android:id="@+id/detail_wind_textview"
-            android:layout_marginTop="4dp"
-            android:gravity="center_vertical"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:textColor="@android:color/white"
-            app:layout_gravity="fill"
-            tools:text="0 km/h" />
-
-    </android.support.v7.widget.GridLayout>
+        android:layout_weight="2" />
 </LinearLayout>
