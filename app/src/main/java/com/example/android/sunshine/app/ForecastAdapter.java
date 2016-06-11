@@ -17,6 +17,7 @@ package com.example.android.sunshine.app;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +37,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
     private Context mContext;
     private View mEmptyView;
     private ForecastAdapterOnClickHandler mClickHandler;
+    private ItemChoiceManager mICM;
 
     private static final int VIEW_TYPE_TODAY = 0;
     private static final int VIEW_TYPE_FUTURE_DAY = 1;
@@ -66,7 +68,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
             mCursor.moveToPosition(adapterPosition);
             int dateColumnIndex = mCursor.getColumnIndex(WeatherContract.WeatherEntry.COLUMN_DATE);
             mClickHandler.onClick(mCursor.getLong(dateColumnIndex), this);
-//            mICM.onClick(this);
+            mICM.onClick(this);
         }
     }
 
@@ -78,8 +80,8 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
         mContext = context;
         mClickHandler = dh;
         mEmptyView = emptyView;
-//        mICM = new ItemChoiceManager(this);
-//        mICM.setChoiceMode(choiceMode);
+        mICM = new ItemChoiceManager(this);
+        mICM.setChoiceMode(choiceMode);
     }
 
     @Override
@@ -118,7 +120,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
 
         double low = mCursor.getDouble(ForecastFragment.COL_WEATHER_MIN_TEMP);
         viewHolder.lowTempView.setText(Utility.formatTemperature(mContext, low));
-//        mICM.onBindViewHolder(viewHolder, position);
+        mICM.onBindViewHolder(viewHolder, position);
     }
 
     @Override
@@ -146,17 +148,23 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
         mUseTodayLayout = useTodayLayout;
     }
 
+    public void selectView(RecyclerView.ViewHolder viewHolder) {
+        if (viewHolder instanceof ForecastAdapterViewHolder) {
+            ForecastAdapterViewHolder vfh = (ForecastAdapterViewHolder) viewHolder;
+            vfh.onClick(vfh.itemView);
+        }
+    }
 
-    //    public void onRestoreInstanceState(Bundle savedInstanceState) {
-//        mICM.onRestoreInstanceState(savedInstanceState);
-//    }
-//
-//    public void onSaveInstanceState(Bundle outState) {
-//        mICM.onSaveInstanceState(outState);
-//    }
-//
-//    public int getSelectedItemPosition() {
-//        return mICM.getSelectedItemPosition();
-//    }
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        mICM.onRestoreInstanceState(savedInstanceState);
+    }
+
+    public void onSaveInstanceState(Bundle outState) {
+        mICM.onSaveInstanceState(outState);
+    }
+
+    public int getSelectedItemPosition() {
+        return mICM.getSelectedItemPosition();
+    }
 
 }

@@ -36,4 +36,7 @@
     <color name="forecast_low_text">#607D8B</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#727272</color>
+
+    <!-- the activated state color -->
+    <color name="activated">#E0E0E0</color>
 </resources>
