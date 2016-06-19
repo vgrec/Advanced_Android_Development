@@ -12,7 +12,7 @@
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
      limitations under the License.
- -->
+-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.sunshine.app">
 
@@ -24,7 +24,6 @@
     <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <!-- Permissions required by the GCM -->
@@ -34,6 +33,7 @@
     <permission
         android:name="com.example.android.sunshine.app.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
+
     <uses-permission android:name="com.example.android.sunshine.app.permission.C2D_MESSAGE" />
 
     <application
@@ -81,6 +81,7 @@
             <intent-filter>
                 <action android:name="android.accounts.AccountAuthenticator" />
             </intent-filter>
+
             <meta-data
                 android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/authenticator" />
@@ -93,11 +94,11 @@
             <intent-filter>
                 <action android:name="android.content.SyncAdapter" />
             </intent-filter>
+
             <meta-data
                 android:name="android.content.SyncAdapter"
                 android:resource="@xml/syncadapter" />
         </service>
-
 
         <!-- The Google Cloud Messaging receiver and services -->
         <receiver
@@ -113,21 +114,21 @@
         </receiver>
 
         <service
-            android:name="com.example.android.sunshine.app.gcm.MyGcmListenerService"
+            android:name=".gcm.MyGcmListenerService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
         <service
-            android:name="com.example.android.sunshine.app.gcm.MyInstanceIDListenerService"
+            android:name=".gcm.MyInstanceIDListenerService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
         </service>
         <service
-            android:name="com.example.android.sunshine.app.gcm.RegistrationIntentService"
+            android:name=".gcm.RegistrationIntentService"
             android:exported="false" />
 
         <meta-data
@@ -139,12 +140,17 @@
             android:label="@string/title_widget_today">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.sunshine.ACTION_DATA_CHANGED" />
             </intent-filter>
+
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/app_widget" />
         </receiver>
 
+        <service
+            android:name=".widget.WeatherIntentService"
+            android:exported="false" />
     </application>
 
 </manifest>

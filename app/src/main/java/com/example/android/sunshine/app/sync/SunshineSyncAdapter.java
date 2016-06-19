@@ -60,6 +60,7 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
     private static final long DAY_IN_MILLIS = 1000 * 60 * 60 * 24;
     private static final int WEATHER_NOTIFICATION_ID = 3004;
 
+    public static final String ACTION_DATA_CHANGED = "com.sunshine.ACTION_DATA_CHANGED";
 
     private static final String[] NOTIFY_WEATHER_PROJECTION = new String[]{
             WeatherContract.WeatherEntry.COLUMN_WEATHER_ID,
@@ -355,6 +356,9 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
 
             Log.d(LOG_TAG, "Sync Complete. " + cVVector.size() + " Inserted");
             setLocationStatus(LOCATION_STATUS_OK);
+
+            Intent intent = new Intent(ACTION_DATA_CHANGED);
+            getContext().sendBroadcast(intent);
         } catch (JSONException e) {
             setLocationStatus(LOCATION_STATUS_SERVER_DOWN);
         }
