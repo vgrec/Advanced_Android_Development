@@ -128,11 +128,22 @@
         </service>
         <service
             android:name="com.example.android.sunshine.app.gcm.RegistrationIntentService"
-            android:exported="false"/>
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAHLE9080HLcqbdSiVbbJuI2V3m5gonBCE" />
+
+        <receiver
+            android:name=".widget.TodayWidgetProvider"
+            android:label="@string/title_widget_today">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/app_widget" />
+        </receiver>
 
     </application>
 
