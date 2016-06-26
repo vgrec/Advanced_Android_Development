@@ -105,11 +105,22 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
     @Override
     public void onBindViewHolder(ForecastAdapterViewHolder viewHolder, int position) {
         mCursor.moveToPosition(position);
+
+        boolean useLongToday;
+        switch (getItemViewType(position)) {
+            case VIEW_TYPE_TODAY:
+                useLongToday = true;
+                break;
+            default:
+                useLongToday = false;
+                break;
+        }
+
         int weatherId = mCursor.getInt(ForecastFragment.COL_WEATHER_CONDITION_ID);
         viewHolder.iconView.setImageResource(Utility.getArtResourceFromUserPreference(mContext, weatherId));
 
         long dateInMillis = mCursor.getLong(ForecastFragment.COL_WEATHER_DATE);
-        viewHolder.dateView.setText(Utility.getFriendlyDayString(mContext, dateInMillis));
+        viewHolder.dateView.setText(Utility.getFriendlyDayString(mContext, dateInMillis, useLongToday));
 
         String description = mCursor.getString(ForecastFragment.COL_WEATHER_DESC);
         viewHolder.descriptionView.setText(description);

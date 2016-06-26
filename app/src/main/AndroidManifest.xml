@@ -145,12 +145,30 @@
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/app_widget" />
+                android:resource="@xml/today_widget" />
+        </receiver>
+
+        <receiver
+            android:name=".widget.DetailWidgetProvider"
+            android:label="@string/title_widget_details">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.sunshine.ACTION_DATA_CHANGED" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/detail_widget" />
         </receiver>
 
         <service
             android:name=".widget.WeatherIntentService"
             android:exported="false" />
+
+        <service
+            android:name=".widget.DetailWidgetRemoteViewsService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
     </application>
 
 </manifest>
